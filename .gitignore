@@ -1,0 +1,6 @@
+*.swo
+*.swp
+node_modules/
+bower_components/
+.serve/
+dist/

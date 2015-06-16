@@ -1,0 +1,36 @@
+{
+  "name": "electron-jsx-babel-boilerplate",
+  "version": "1.0.0",
+  "description": "Electron boilerplate project with React and babel",
+  "main": ".serve/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "react",
+    "babel"
+  ],
+  "author": "Quramy",
+  "license": "MIT",
+  "dependencies":{
+    "del": "^1.1.1",
+    "electron-connect": "^0.1.4",
+    "gulp": "^3.8.11",
+    "gulp-asar": "0.0.2",
+    "gulp-babel": "^5.1.0",
+    "gulp-inject": "^1.2.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-useref": "^1.2.0",
+    "main-bower-files": "^2.8.0"
+  },
+  "devDependencies": {
+    "babel": "^5.4.7",
+    "classnames": "^2.1.2",
+    "react": "^0.13.3"
+  }
+}
