@@ -58,6 +58,7 @@ gulp.task('inject:css', function() {
 });
 gulp.task('compile:scripts', ['compile:scripts:browser', 'compile:scripts:renderer']);
 
+// Copy assets
 gulp.task('misc', function () {
   return gulp.src(srcDir + '/assets/**/*')
     .pipe(gulp.dest(serveDir + '/assets'))
@@ -72,8 +73,8 @@ gulp.task('serve', ['build'], function () {
   gulp.watch([srcDir + '/styles/**/*.scss'], ['compile:styles']);
   gulp.watch([srcDir + '/app.js', srcDir + '/browser/**/*.js'], ['compile:scripts:browser']);
   gulp.watch([srcDir + '/renderer/**/*.js', srcDir + '/renderer/**/*.jsx'], ['compile:scripts:renderer']);
-  gulp.watch([serveDir + '/app.js', serveDir + '/browser/**/*.js'], electron.restart.bind(electron));
-  gulp.watch([serveDir + '/styles/**/*.css', serveDir + '/renderer/**/*.html', serveDir + '/renderer/**/*.js'], electron.reload.bind(electron));
+  gulp.watch([serveDir + '/app.js', serveDir + '/browser/**/*.js'], electron.restart);
+  gulp.watch([serveDir + '/styles/**/*.css', serveDir + '/renderer/**/*.html', serveDir + '/renderer/**/*.js'], electron.reload);
 });
 
 gulp.task('clean', function (done) {
