@@ -15,12 +15,20 @@
   ],
   "author": "Quramy",
   "license": "MIT",
-  "dependencies":{
+  "dependencies": {
+    "babel": "^5.4.7",
+    "lodash": "^3.9.3",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "classnames": "^2.1.2",
     "del": "^1.1.1",
-    "electron-connect": "^0.1.5",
+    "electron-connect": "^0.1.6",
     "gulp": "^3.8.11",
     "gulp-asar": "0.0.2",
     "gulp-babel": "^5.1.0",
+    "gulp-filter": "^2.0.2",
+    "gulp-flatten": "0.0.4",
     "gulp-inject": "^1.2.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-plumber": "^1.0.1",
@@ -28,11 +36,9 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "gulp-useref": "^1.2.0",
-    "main-bower-files": "^2.8.0"
-  },
-  "devDependencies": {
-    "babel": "^5.4.7",
-    "classnames": "^2.1.2",
-    "react": "^0.13.3"
+    "gulp-util": "^3.0.5",
+    "gulp-watch": "^4.2.4",
+    "main-bower-files": "^2.8.0",
+    "vinyl-buffer": "^1.0.0"
   }
 }

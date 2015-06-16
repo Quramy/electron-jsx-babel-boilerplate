@@ -24,8 +24,5 @@ app.on('ready', () => {
     height: 365
   });
   mainWindow.loadUrl('file://' + __dirname + '/renderer/index.html');
-  if(process.env.NODE_ENV === 'develop') {
-    require('electron-connect').client.create(mainWindow);
-  }
 });
 
