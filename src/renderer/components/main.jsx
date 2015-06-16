@@ -11,7 +11,7 @@ export class Main extends React.Component {
     super();
   }
   openGithub () {
-    shell.openExternal('https://github.com/Quramy');
+    shell.openExternal('https://github.com/Quramy/electron-jsx-babel-boilerplate');
   }
   render() {
     return (
