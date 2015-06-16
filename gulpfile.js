@@ -7,6 +7,7 @@ var fs = require('fs');
 var del = require('del');
 var mainBowerFiles = require('main-bower-files');
 var electron = require('electron-connect').server.create();
+var packager = require('electron-packager');
 
 var srcDir      = 'src';
 var serveDir    = '.serve';
@@ -44,6 +45,7 @@ gulp.task('misc', function () {
   ;
 });
 
+// Incremental compile ES6, JSX files with sourcemaps
 gulp.task('compile:scripts:watch', function (done) {
   gulp.src('src/**/*.{js,jsx}')
     .pipe($.watch('src/**/*.{js,jsx}', {verbose: true}))
@@ -56,6 +58,7 @@ gulp.task('compile:scripts:watch', function (done) {
   done();
 });
 
+// Compile scripts for distribution
 gulp.task('compile:scripts', function () {
   return gulp.src('src/**/*.{js,jsx}')
     .pipe($.babel({stage: 0}))
@@ -73,6 +76,15 @@ gulp.task('html', ['inject:css'], function () {
   ;
 });
 
+// Copy fonts file. You don't need to copy *.ttf nor *.svg nor *.otf.
+gulp.task('copy:fonts', function () {
+  return gulp.src('bower_components/**/fonts/*.woff')
+    .pipe($.flatten())
+    .pipe(gulp.dest(distDir + '/fonts'))
+  ;
+});
+
+// Copy Node modules
 gulp.task('copy:dependencies', function () {
   var dependencies = [];
   for(var name in packageJson.dependencies) {
@@ -83,14 +95,8 @@ gulp.task('copy:dependencies', function () {
   ;
 });
 
-gulp.task('copy:fonts', function () {
-  return gulp.src('bower_components/**/fonts/*.woff')
-    .pipe($.flatten())
-    .pipe(gulp.dest(distDir + '/fonts'))
-  ;
-});
-
-gulp.task('packageJson', function (done) {
+// Write a package.json for distribution
+gulp.task('packageJson', ['copy:dependencies'], function (done) {
   var json = _.cloneDeep(packageJson);
   json.main = 'app.js';
   fs.writeFile(distDir + '/package.json', JSON.stringify(json), function (err) {
@@ -98,7 +104,25 @@ gulp.task('packageJson', function (done) {
   });
 });
 
-gulp.task('build', ['html', 'compile:scripts', 'copy:dependencies', 'packageJson', 'copy:fonts', 'misc']);
+// Package for each platforms
+gulp.task('package', ['win32', 'darwin', 'linux'].map(function (platform) {
+  var taskName = 'package:' + platform;
+  gulp.task(taskName, ['build'], function (done) {
+    packager({
+      dir: distDir,
+      name: 'ElectronApp',
+      arch: 'x64',
+      platform: platform,
+      out: releaseDir + '/' + platform,
+      version: '0.28.1'
+    }, function (err) {
+      done();
+    });
+  });
+  return taskName;
+}));
+
+gulp.task('build', ['html', 'compile:scripts', 'packageJson', 'copy:fonts', 'misc']);
 
 gulp.task('serve', ['inject:css', 'compile:scripts:watch', 'compile:styles', 'misc'], function () {
   electron.start();
@@ -112,5 +136,7 @@ gulp.task('clean', function (done) {
     done();
   });
 });
+
+gulp.task('default', ['build']);
 
 
