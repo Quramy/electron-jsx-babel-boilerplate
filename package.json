@@ -4,6 +4,8 @@
   "description": "Electron boilerplate project with React and babel",
   "main": ".serve/app.js",
   "scripts": {
+    "install": "bower install",
+    "start": "gulp serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

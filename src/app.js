@@ -20,8 +20,8 @@ app.on('window-all-closed', () => {
 app.on('ready', () => {
   //Menu.setApplicationMenu(appMenu);
   mainWindow = new BrowserWindow({
-    width: 400,
-    height: 300
+    width: 580,
+    height: 365
   });
   mainWindow.loadUrl('file://' + __dirname + '/renderer/index.html');
   if(process.env.NODE_ENV === 'develop') {
