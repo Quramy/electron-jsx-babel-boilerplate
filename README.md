@@ -4,10 +4,10 @@ This is a sample repository of [Electron](http://electron.atom.io/) application.
 
 This boilerplate includes the following build tasks:
 
-* Using [React](https://facebook.github.io/react/)
-* Transpilation ES6 style JavaScripts files with [Babel](https://babeljs.io/)
+* Transpillation [React](https://facebook.github.io/react/) JSX and ES6 style JavaScript files with [Babel](https://babeljs.io/)
 * Compilation scss files
 * Livereload when you change source files
+* Packaging distribution apllicatoins for each platforms(win32, darwin, linux)
 
 ## Install
 
