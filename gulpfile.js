@@ -66,6 +66,7 @@ gulp.task('compile:scripts', function () {
   ;
 });
 
+// Make HTML and concats CSS files.
 gulp.task('html', ['inject:css'], function () {
   var assets = $.useref.assets({searchPath: ['bower_components', serveDir + '/styles']});
   return gulp.src(serveDir + '/renderer/**/*.html')
