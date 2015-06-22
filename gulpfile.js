@@ -184,7 +184,7 @@ gulp.task('clean', function (done) {
 gulp.task('serve', ['inject:css', 'compile:scripts:watch', 'compile:styles', 'misc'], function () {
   var electron = electronServer.create();
   electron.start();
-  gulp.watch(['boewr.json', srcDir + '/renderer/index.html'], ['inject:css']);
+  gulp.watch(['bower.json', srcDir + '/renderer/index.html'], ['inject:css']);
   gulp.watch([serveDir + '/app.js', serveDir + '/browser/**/*.js'], electron.restart);
   gulp.watch([serveDir + '/styles/**/*.css', serveDir + '/renderer/**/*.html', serveDir + '/renderer/**/*.js'], electron.reload);
 });
