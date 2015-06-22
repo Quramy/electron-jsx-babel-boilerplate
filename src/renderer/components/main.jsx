@@ -19,7 +19,7 @@ export class Main extends React.Component {
         <div className="jumbotron main">
           <h1>{this.state.message}</h1>
           <img src="../assets/images/electron.svg" alt="" width="128px"></img>
-          <p>Provieded from <a href="#" onClick={this.openGithub}>electron-boilerplate-jsx-babel<span className="glyphicon glyphicon-heart"></span></a></p>
+          <p>Provieded by <a href="#" onClick={this.openGithub}>electron-jsx-babel-boilerplate<span className="glyphicon glyphicon-heart"></span></a></p>
         </div>
       </div>
     );
