@@ -9,6 +9,7 @@ export class Main extends React.Component {
   }
   constructor () {
     super();
+    this.openGithub = ::this.openGithub
   }
   openGithub () {
     shell.openExternal('https://github.com/Quramy/electron-jsx-babel-boilerplate');
