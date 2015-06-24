@@ -41,26 +41,26 @@ gulp package
 ## Directory structure
 
 ```
-+ .serve/                      Compiled files
-+ dist/                        Application for distribution
-- release/                     Packaged applications
- |+ darwin/                    
- |+ linux/                     
- |+ win32/                     
-- src/                         Source directory
- |- assets/                    
-  |+ images/                   
- |- browser/                   For browser process scripts
-  |+ menu/                     
- |- renderer/                  For renderer process scripts and resources
-  |+ components/               React components
-  |  bootstrap.js              Entry point for render process
-  |  index.html                
- |- styles/                    SCSS directory
-  |  main.scss                 
- |  app.js                     Entry point for browser process
-  bower.json                   
-  gulpfile.js                  
-  package.json                 
++ .serve/              Compiled files
++ dist/                Application for distribution
+- release/             Packaged applications for platforms
+ |+ darwin/            
+ |+ linux/             
+ |+ win32/             
+- src/                 Source directory
+ |- assets/            
+  |+ images/           
+ |- browser/           For browser process scripts
+  |+ menu/             
+ |- renderer/          For renderer process scripts and resources
+  |+ components/       React components
+  |  bootstrap.js      Entry point for render process
+  |  index.html        
+ |- styles/            SCSS directory
+  |  main.scss         
+ |  app.js             Entry point for browser process
+  bower.json           
+  gulpfile.js          
+  package.json         
 ```
 

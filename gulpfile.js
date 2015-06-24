@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var _ = require('lodash');
 var fs = require('fs');
+var path = require('path');
 var del = require('del');
 var mainBowerFiles = require('main-bower-files');
 var electronServer = require('electron-connect').server;
@@ -115,7 +116,7 @@ gulp.task('bundle:dependencies', function () {
     }else{
       main = [packageJson.main];
     }
-    return {name: dep, main: main};
+    return {name: dep, main: main.map(function (it) {return path.basename(it);})};
   });
 
   // add babel/polyfill module
@@ -124,17 +125,16 @@ gulp.task('bundle:dependencies', function () {
   // create bundle file and minify for each main files
   modules.forEach(function (it) {
     it.main.forEach(function (entry) {
-      streams.push(
-        browserify(
-          'node_modules/' + it.name + '/' + entry, {
-          detectGlobal: false,
-          exclude: excludeModules,
-          standalone: entry
-        }).bundle()
-          .pipe(source(entry))
-          .pipe(buffer())
-          .pipe($.uglify())
-          .pipe(gulp.dest(distDir + '/node_modules/' + it.name))
+      var b = browserify('node_modules/' + it.name + '/' + entry, {
+        detectGlobal: false,
+        standalone: entry
+      });
+      excludeModules.forEach(function (moduleName) {b.exclude(moduleName)});
+      streams.push(b.bundle()
+        .pipe(source(entry))
+        .pipe(buffer())
+        .pipe($.uglify())
+        .pipe(gulp.dest(distDir + '/node_modules/' + it.name))
       );
     });
     streams.push(
