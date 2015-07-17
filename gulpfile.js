@@ -166,7 +166,8 @@ gulp.task('package', ['win32', 'darwin', 'linux'].map(function (platform) {
       arch: 'x64',
       platform: platform,
       out: releaseDir + '/' + platform,
-      version: '0.28.1'
+      version: '0.29.2',
+      ignore: 'node_modules'
     }, function (err) {
       done();
     });
@@ -196,4 +197,3 @@ gulp.task('serve:dist', ['build'], function () {
 });
 
 gulp.task('default', ['build']);
-
