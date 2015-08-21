@@ -7,6 +7,7 @@ var fs = require('fs');
 var path = require('path');
 var del = require('del');
 var mainBowerFiles = require('main-bower-files');
+var electronPrebuilt = require('electron-prebuilt');
 var electronServer = require('electron-connect').server;
 var packager = require('electron-packager');
 var merge = require('merge2');
@@ -182,6 +183,7 @@ gulp.task('clean', function (done) {
 });
 
 gulp.task('serve', ['inject:css', 'compile:scripts:watch', 'compile:styles', 'misc'], function () {
+  //var electron = electronServer.create({electron: electronPrebuilt});
   var electron = electronServer.create();
   electron.start();
   gulp.watch(['bower.json', srcDir + '/renderer/index.html'], ['inject:css']);
