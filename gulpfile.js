@@ -15,6 +15,7 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var packageJson = require('./package.json');
+var optimist = require('optimist');
 
 var srcDir      = 'src';      // source directory
 var serveDir    = '.serve';   // directory for serve task
@@ -195,6 +196,17 @@ gulp.task('build', ['html', 'compile:scripts', 'packageJson', 'copy:fonts', 'mis
 
 gulp.task('serve:dist', ['build'], function () {
   electronServer.create({path: distDir}).start();
+});
+
+gulp.task('boilerplate', function () {
+  var outDir = optimist.argv.o || optimist.argv.out;
+  if (!outDir) {
+    console.log('usage: gulp boilerplate -o {outdir}');
+    return;
+  }
+  var configStream = gulp.src(['bower.json', 'package.json', 'gulpfile.js']).pipe(gulp.dest(outDir));
+  var srcStream = gulp.src(['src/**/*']).pipe(gulp.dest(outDir + '/src'));
+  return merge([configStream, srcStream]);
 });
 
 gulp.task('default', ['build']);
