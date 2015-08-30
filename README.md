@@ -14,7 +14,7 @@ This boilerplate includes the following build tasks:
 Clone this repository, so execute the following command.
 
 ```bash
-cd electron-jsx-bash-boilerplate
+cd electron-jsx-babel-boilerplate
 npm install -g bower gulp
 npm install
 ```
@@ -44,23 +44,23 @@ gulp package
 + .serve/              Compiled files
 + dist/                Application for distribution
 - release/             Packaged applications for platforms
- |+ darwin/            
- |+ linux/             
- |+ win32/             
+ |+ darwin/
+ |+ linux/
+ |+ win32/
 - src/                 Source directory
- |- assets/            
-  |+ images/           
+ |- assets/
+  |+ images/
  |- browser/           For browser process scripts
-  |+ menu/             
+  |+ menu/
  |- renderer/          For renderer process scripts and resources
   |+ components/       React components
   |  bootstrap.js      Entry point for render process
-  |  index.html        
+  |  index.html
  |- styles/            SCSS directory
-  |  main.scss         
+  |  main.scss
  |  app.js             Entry point for browser process
-  bower.json           
-  gulpfile.js          
-  package.json         
+  bower.json
+  gulpfile.js
+  package.json
 ```
 
