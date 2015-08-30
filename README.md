@@ -15,7 +15,7 @@ Clone this repository, so execute the following command.
 
 ```bash
 cd electron-jsx-babel-boilerplate
-npm install -g bower gulp
+npm install -g bower gulp electron-prebuilt
 npm install
 ```
 
