@@ -38,6 +38,12 @@ gulp build;electron dist
 gulp package
 ```
 
+## Copy this boilerplate
+
+```bash
+gulp boilerplate -o {DIST_DIR}
+```
+
 ## Directory structure
 
 ```
