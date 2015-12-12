@@ -186,7 +186,7 @@ gulp.task('serve', ['inject:css', 'compile:scripts:watch', 'compile:styles', 'mi
   var electron = electronServer.create();
   electron.start();
   gulp.watch(['bower.json', srcDir + '/renderer/index.html'], ['inject:css']);
-  gulp.watch([serveDir + '/app.js', serveDir + '/browser/**/*.js'], electron.restart);
+  gulp.watch([serveDir + '/app.js', serveDir + '/browser/**/*.js'], electron.reload);
   gulp.watch([serveDir + '/styles/**/*.css', serveDir + '/renderer/**/*.html', serveDir + '/renderer/**/*.js'], electron.reload);
 });
 
