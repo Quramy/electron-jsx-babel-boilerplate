@@ -1,5 +1,7 @@
 # electron-jsx-babel-boilerplate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Quramy/electron-jsx-babel-boilerplate.svg)](https://greenkeeper.io/)
+
 This is a sample repository of [Electron](http://electron.atom.io/) application.
 
 This boilerplate includes the following build tasks:
